@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoMovil.Login"
+             BackgroundImageSource="Background.png">
+    <ContentPage.Content>
+        <Grid VerticalOptions="Center">
+            
+            <BoxView Color="Azure" Opacity="0.5"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="profileuser.png" WidthRequest="150" HeightRequest="150" Margin="0,50,0,30"></Image>
+                <StackLayout Grid.Row="1" Padding="30,2">
+                    <Entry Placeholder="Correo electronico..." PlaceholderColor="Black"/>
+                    <Entry Placeholder="Contraseña..." PlaceholderColor="Black" IsPassword="True"/>
+                    <Button Text="Iniciar Sesion" BackgroundColor="Black" TextColor="White" CornerRadius="20" Clicked="Button_Clicked"></Button>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="¿Recuperar contraseña?"></Label>
+                        <Label Text="Registrarse" HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="2" HorizontalOptions="Center" Margin="0,30,0,0">
+                    <Label Text="Iniciar sesion con" HorizontalOptions="Center"></Label>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Grid.Row="0" Source="Menu.png" WidthRequest="45" HeightRequest="45"/>
+                        <Image Grid.Row="0" Source="Menu.png" WidthRequest="45" HeightRequest="45"/>
+                        <Image Grid.Row="0" Source="Menu.png" WidthRequest="45" HeightRequest="45"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

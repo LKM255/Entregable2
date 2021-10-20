@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoMovil.Inicio">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <BoxView Color="Chocolate" Grid.Row="0" HeightRequest="40"></BoxView>
+            <Image Source="Menu.png" Grid.Row="0" HorizontalOptions="Start" Margin="15"></Image>
+            <Image Source="profileuser.png" Grid.Row="0" HorizontalOptions="End" HeightRequest="40"></Image>
+            <Grid Grid.Row="1" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <Image Source="dormitorio.png" Grid.Row="0" Grid.Column="1" WidthRequest="90" Margin="0,50"></Image>
+                <Image Source="cocinando.png" Grid.Row="0" Grid.Column="2" WidthRequest="90"></Image>
+                <Image Source="mesa.png" Grid.Row="0" Grid.Column="3" WidthRequest="90"></Image>
+                <Image Source="sofa.png" Grid.Row="0" Grid.Column="4" WidthRequest="90"></Image>
+                <Label Text="Dormitorio" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Margin="0,-40" FontSize="20" FontAttributes="Bold"></Label>
+                <Label Text="Cocina" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" Margin="0,-40" FontSize="20" FontAttributes="Bold"></Label>
+                <Label Text="Comedor" Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Margin="0,-40" FontSize="20" FontAttributes="Bold"></Label>
+                <Label Text="Sala" Grid.Row="1" Grid.Column="4" HorizontalOptions="Center" Margin="0,-40" FontSize="20" FontAttributes="Bold"></Label>
+            </Grid>
+            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    
+                                </Grid.RowDefinitions>
+                <ImageButton Source="mesa1.jpg" Grid.Column="0" Grid.Row="0" WidthRequest="200"  Clicked="ImageButton_Clicked"></ImageButton>
+                <Label Text="S/ 250" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center" FontSize="30"></Label>
+                <ImageButton Source="sofa1.jpg" Grid.Column="1" Grid.Row="0" WidthRequest="200" Clicked="ImageButton_Clicked_1"></ImageButton>
+                <Label Text="S/ 1000" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" FontSize="30"></Label>
+                
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ImageButton Source="cocina1.webp" Grid.Column="0" Grid.Row="0" WidthRequest="200" Clicked="ImageButton_Clicked_2"></ImageButton>
+                <Label Text="S/ 1500" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center" FontSize="30"></Label>
+                <ImageButton Source="cama1.jpg" Grid.Column="1" Grid.Row="0" WidthRequest="200" Clicked="ImageButton_Clicked_3"></ImageButton>
+                <Label Text="S/ 900" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" FontSize="30"></Label>
+            </Grid>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

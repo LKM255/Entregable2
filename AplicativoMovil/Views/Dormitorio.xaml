@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoMovil.Views.Dormitorio">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <BoxView Color="Chocolate" Grid.Row="0" HeightRequest="40"></BoxView>
+                <Image Source="Menu.png" Grid.Row="0" HorizontalOptions="Start" Margin="15"></Image>
+                <Image Source="profileuser.png" Grid.Row="0" HorizontalOptions="End" HeightRequest="40"></Image>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" RowDefinitions="Auto,Auto">
+                        <Label Text="Domitorio" FontSize="50" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                        <Label Text="Cama pastel" Grid.Row="1" FontSize="30" FontAttributes="Italic" HorizontalOptions="Center"></Label>
+                    </Grid>
+                    <Grid Grid.Row="1" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,Auto">
+                        <Frame CornerRadius="20" WidthRequest="350" Grid.ColumnSpan="3">
+                            <Image Source="cama1.png" Aspect="AspectFill"></Image>
+                        </Frame>
+                        <Image Source="shop.jpg" Grid.Row="1" Grid.Column="0" WidthRequest="60"></Image>
+                        <Label Text="S/ 9000" Grid.Row="1" Grid.Column="1" FontSize="50" HorizontalOptions="Center"></Label>
+                    </Grid>
+                    <Grid Grid.Row="2" RowDefinitions="Auto,Auto,Auto,Auto">
+                        <Label Text="Descripcion:" FontSize="20"></Label>
+                        <Label Grid.Row="1" Text="Cama pastel con relleno de espuma color blanco" FontSize="20"/>
+                        <Label Grid.Row="2" Text=". 2 almohadas" FontSize="20"></Label>
+                        <Button Grid.Row="3" Text="Comprar" BackgroundColor="Chocolate" CornerRadius="20" HorizontalOptions="Center" Clicked="Button_Clicked"></Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
