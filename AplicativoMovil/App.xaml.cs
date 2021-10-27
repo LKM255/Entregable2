@@ -11,7 +11,7 @@ namespace AplicativoMovil
         {
             InitializeComponent();
 
-            MainPage = new Login();
+            MainPage = new Inicio();
         }
 
         protected override void OnStart()

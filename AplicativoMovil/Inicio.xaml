@@ -13,7 +13,7 @@
             <BoxView Color="Chocolate" Grid.Row="0" HeightRequest="40"></BoxView>
             <Image Source="Menu.png" Grid.Row="0" HorizontalOptions="Start" Margin="15"></Image>
             <Image Source="profileuser.png" Grid.Row="0" HorizontalOptions="End" HeightRequest="40"></Image>
-            <Grid Grid.Row="1" Grid.RowSpan="2">
+            <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -26,12 +26,12 @@
                 <Image Source="cocinando.png" Grid.Row="0" Grid.Column="2" WidthRequest="90"></Image>
                 <Image Source="mesa.png" Grid.Row="0" Grid.Column="3" WidthRequest="90"></Image>
                 <Image Source="sofa.png" Grid.Row="0" Grid.Column="4" WidthRequest="90"></Image>
-                <Label Text="Dormitorio" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Margin="0,-40" FontSize="20" FontAttributes="Bold"></Label>
-                <Label Text="Cocina" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" Margin="0,-40" FontSize="20" FontAttributes="Bold"></Label>
-                <Label Text="Comedor" Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Margin="0,-40" FontSize="20" FontAttributes="Bold"></Label>
-                <Label Text="Sala" Grid.Row="1" Grid.Column="4" HorizontalOptions="Center" Margin="0,-40" FontSize="20" FontAttributes="Bold"></Label>
+                <Label Text="Dormitorio" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Margin="0,-10" FontSize="20" FontAttributes="Bold"></Label>
+                <Label Text="Cocina" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" Margin="0,-10" FontSize="20" FontAttributes="Bold"></Label>
+                <Label Text="Comedor" Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Margin="0,-10" FontSize="20" FontAttributes="Bold"></Label>
+                <Label Text="Sala" Grid.Row="1" Grid.Column="4" HorizontalOptions="Center" Margin="0,-10" FontSize="20" FontAttributes="Bold"></Label>
             </Grid>
-            <Grid Grid.Row="2">
+            <!--<Grid Grid.Row="2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -60,7 +60,44 @@
                 <Label Text="S/ 1500" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center" FontSize="30"></Label>
                 <ImageButton Source="cama1.jpg" Grid.Column="1" Grid.Row="0" WidthRequest="200" Clicked="ImageButton_Clicked_3"></ImageButton>
                 <Label Text="S/ 900" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" FontSize="30"></Label>
-            </Grid>
+            </Grid>-->
+
+            <!--<CollectionView x:Name="clv" ItemsSource="{Binding producto}" VerticalOptions="StartAndExpand" Grid.Row="2" Margin="0,-210,0,0" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="2"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="*" RowDefinitions="200,Auto" Padding="2">
+                                    <ImageButton Source="{Binding imagen}" Grid.Row="0" HorizontalOptions="Center" WidthRequest="300" HeightRequest="300"></ImageButton>
+                                    <Label Text="{Binding Precio}" FontSize="30" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>-->
+            <ListView x:Name="list" ItemsSource="{Binding producto}" Grid.Row="2" HasUnevenRows="True" ItemSelected="list_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding ID}" IsVisible="false"></Label>
+                                <Image Source="{Binding imagen}"  HorizontalOptions="Start" Grid.RowSpan="2" Aspect="AspectFill" HeightRequest="160" WidthRequest="160"></Image>
+                                <Label Text="{Binding nombre}" FontSize="15" FontAttributes="Bold" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                                <Label Text="{Binding Precio}" FontSize="20" FontAttributes="Bold" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                            
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
         
     </ContentPage.Content>
