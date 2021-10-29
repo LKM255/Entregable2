@@ -20,31 +20,31 @@ namespace AplicativoMovil
             BindingContext = new ProductoViewModel();
         }
 
-        //private void ImageButton_Clicked(object sender, EventArgs e)
-        //{
-        //    Navigation.PushModalAsync(new Comedor());
-        //}
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Comedor());
+        }
 
-        //private void ImageButton_Clicked_1(object sender, EventArgs e)
-        //{
-        //    Navigation.PushModalAsync(new Sala());
-        //}
+        private void ImageButton_Clicked_1(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Sala());
+        }
 
-        //private void ImageButton_Clicked_2(object sender, EventArgs e)
-        //{
-        //    Navigation.PushModalAsync(new Cocina());
-        //}
+        private void ImageButton_Clicked_2(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Cocina());
+        }
 
-        //private void ImageButton_Clicked_3(object sender, EventArgs e)
-        //{
-        //    Navigation.PushModalAsync(new Dormitorio());
-        //}
+        private void ImageButton_Clicked_3(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Dormitorio());
+        }
 
 
-        //private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    Navigation.PushModalAsync(new Comedor());
-        //}
+        private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Navigation.PushModalAsync(new Comedor());
+        }
 
         private void list_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

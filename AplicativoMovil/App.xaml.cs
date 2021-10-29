@@ -10,8 +10,7 @@ namespace AplicativoMovil
         public App()
         {
             InitializeComponent();
-
-            MainPage = new Inicio();
+            MainPage = new Login();
         }
 
         protected override void OnStart()
