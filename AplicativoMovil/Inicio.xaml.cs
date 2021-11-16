@@ -18,56 +18,20 @@ namespace AplicativoMovil
         {
             InitializeComponent();
             BindingContext = new ProductoViewModel();
+            
         }
-
-        private void ImageButton_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new Comedor());
-        }
-
-        private void ImageButton_Clicked_1(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new Sala());
-        }
-
-        private void ImageButton_Clicked_2(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new Cocina());
-        }
-
-        private void ImageButton_Clicked_3(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new Dormitorio());
-        }
-
-
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Navigation.PushModalAsync(new Comedor());
-        }
-
-        private void list_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            var obj = e.SelectedItemIndex;
             
-            //var obj = (Models.Producto)e.SelectedItem;
-            if(obj == 0)
-            {
-                Navigation.PushAsync(new Comedor());
-            }
-            else if(obj==1)
-            {
-                Navigation.PushAsync(new Sala());
-            }
-            else if (obj == 2)
-            {
-                Navigation.PushAsync(new Cocina());
-            }
-            else if (obj== 3)
-            {
-                Navigation.PushAsync(new Dormitorio());
-            }
-
+            var c = e.CurrentSelection.First();
+            Models.Producto model = e.CurrentSelection.FirstOrDefault() as Models.Producto;
+            string id = model.ID.ToString();
+            string nombre = model.nombre;
+            string imagen = model.imagen;
+            string descrip = model.descripcion;
+            string precio = model.precio.ToString();
+            Navigation.PushModalAsync(new PageDetail(id, nombre, imagen, descrip,  precio));
         }
+
     }
 }

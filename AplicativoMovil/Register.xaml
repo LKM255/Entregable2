@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AplicativoMovil.Login"
-             BackgroundImageSource="Background.png">
+             x:Class="AplicativoMovil.Register">
     <ContentPage.Content>
         <Grid VerticalOptions="Center">
-            
+
             <BoxView Color="Azure" Opacity="0.5"/>
             <Grid>
                 <Grid.RowDefinitions>
@@ -15,17 +14,19 @@
                 </Grid.RowDefinitions>
                 <Image Grid.Row="0" Source="profileuser.png" WidthRequest="150" HeightRequest="150" Margin="0,50,0,30"></Image>
                 <StackLayout Grid.Row="1" Padding="30,2">
-                    <Entry Placeholder="Correo electronico..." PlaceholderColor="Black" Text="{Binding EmailTxt}"/>
-                    <Entry Placeholder="Contraseña..." PlaceholderColor="Black" IsPassword="True" Text="{Binding PasswordTxt}"/>
-                    <Button Text="Iniciar Sesion" BackgroundColor="Black" TextColor="White" CornerRadius="20" Command="{Binding LoginCommmand}"></Button>
-                    
-                        <Label Text="Registrarse" HorizontalOptions="EndAndExpand" FontAttributes="Bold">
-                            <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                        
+                    <Entry Placeholder="Nomrbes..." PlaceholderColor="Black" Text="{Binding Nombretxt, Mode=TwoWay}"/>
+                    <Entry Placeholder="Correo electronico..." PlaceholderColor="Black" Text="{Binding Emailtxt, Mode=TwoWay}"/>
+                    <Entry Placeholder="Contraseña..." PlaceholderColor="Black" IsPassword="True" Text="{Binding Passwordtxt, Mode=TwoWay}"/>
+                    <Button Text="Registrarse" BackgroundColor="Black" TextColor="White" CornerRadius="20" Command="{Binding RegisterCommand}"></Button>
+                    <Label Text="Regresar" HorizontalOptions="EndAndExpand" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
+                
+                   
+                
                 <StackLayout Grid.Row="2" HorizontalOptions="Center" Margin="0,30,0,0">
                     <Label Text="Iniciar sesion con" HorizontalOptions="Center"></Label>
                     <StackLayout Orientation="Horizontal">

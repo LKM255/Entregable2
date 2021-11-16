@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AplicativoMovil.Views
+namespace AplicativoMovil
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Cocina : ContentPage
+    public partial class AppShell : Shell
     {
-        public Cocina()
+        public AppShell()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            //Navigation.PushModalAsync(new Pedido());
         }
     }
 }

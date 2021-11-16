@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoMovil.Views.Carrito">
+    <ContentPage.Content>
+        <ScrollView>
+            <!-- Main Structure-->
+            <Grid RowSpacing="0" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+                <!-- Price block-->
+                <!-- Frame with price information-->
+                <Frame Grid.Row="0" Margin="30,90,30,0" HeightRequest="100" >
+                    <Grid RowDefinitions="Auto,Auto,Auto" HorizontalOptions="Center">
+                        <Label Grid.Row="0" Text="$181.94"  Margin="0,20,0,0"/>
+                        <Label Grid.Row="1" Text="September 24, 7:32pm" HorizontalOptions="Center"/>
+                        <Line  Grid.Row="2"  />
+                    </Grid>
+                </Frame>
+                <!-- Main image-->
+                <Image Grid.Row="0" Source="Nike" HorizontalOptions="Center" TranslationY="-35" HeightRequest="90" WidthRequest="90"/>
+                <!-- Indicator Bar-->
+                <!--<Frame Grid.Row="0" CornerRadius="20" TranslationY="90" TranslationX="30" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="100" HeightRequest="35">
+                    <Grid RowDefinitions="*" BackgroundColor="#1277e3" Padding="15,5">
+                        <Label Grid.Row="0" Text="OFFLINE" FontAttributes="Bold" TextColor="White" FontSize="15"/>
+                    </Grid>
+                </Frame>-->
+                <!-- 2. Details & Total-->
+                <Frame Grid.Row="1" Margin="30,-15,30,0" HeightRequest="292">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
+                        <!-- Product list-->
+                        <CollectionView x:Name="cldetalle" Grid.Row="1" Grid.Column="0" Margin="0,-15,0,12" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand"
+                                     VerticalScrollBarVisibility="Never"
+                                     HeightRequest="145">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HeightRequest="60" WidthRequest="60" Source="{Binding Picture}" Margin="0,5,0,0"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding descripcion}" Margin="0,5,0,0" FontAttributes="Bold" FontSize="16" TextColor="Silver"/>
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding descripcion}" FontAttributes="Bold" FontSize="16" VerticalOptions="End" Margin="0,0,0,5"/>
+                                        <Label Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"  VerticalOptions="Center" FontSize="18" FontAttributes="Bold">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="S/"
+                                                          FontSize="18"
+                                                          />
+                                                    <Span Text="{Binding precio}"
+                                                          FontSize="18"
+                                                          />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Line  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" X1="260" StrokeThickness="0.5" Stroke="Silver"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- Amount of products -->
+                        <Label Grid.Row="2" Grid.Column="0" Text="Total" FontSize="16" TextColor="#4f4f4f" FontAttributes="Bold" Margin="0,0,0,10"/>
+                        
+                        <Label Grid.Row="2" Grid.Column="1" x:Name="lblsubtotal" Text="0"  FontSize="18" FontAttributes="Bold" Margin="0,0,0,10" HorizontalOptions="End"/>
+                        
+
+                        <Line  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,15"
+                            />
+
+                        <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Text="ComercialValderrama" FontAttributes="Bold" FontSize="16" HorizontalOptions="Center"/>
+                        <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Text="Peru-Lima-Comas" HorizontalOptions="Center"/>
+
+                    </Grid>
+                </Frame>
+                <!-- Rounded borders-->
+                <Ellipse Grid.Row="1" HorizontalOptions="Start"  TranslationY="-322" TranslationX="20"  Fill="#efefef" VerticalOptions="End" HeightRequest="26" WidthRequest="26" StrokeThickness="0"/>
+                <Ellipse Grid.Row="1" HorizontalOptions="End" TranslationY="-322" TranslationX="-20" Fill="#efefef" VerticalOptions="End" HeightRequest="26" WidthRequest="26" StrokeThickness="0"/>
+
+                <!-- Timeline-->
+                <Frame Grid.Row="2" Margin="30,20,30,0" HeightRequest="113">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+                        <Label Grid.Row="0" Grid.Column="0" Text="TIMELINE" TextColor="Silver" FontSize="14" CharacterSpacing="2"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="Nov 9" Padding="0,0,15,0" FontSize="16" FontAttributes="Bold" />
+                        <!--<Label Grid.Row="1" Grid.Column="1" Text="Confirm received commodity, $181.94 is included in this month bills." FontSize="13" LineBreakMode="WordWrap"/>-->
+                        <Label Grid.Row="1" Grid.Column="1" Padding="0,5,0,0" HorizontalOptions="Start" Text="jean@hotmail.com" HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold"/>
+                        <Line Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Margin="0,5,0,0"
+                               X1="260"
+                               StrokeThickness="0.5"
+                               Stroke="Silver"/>
+                        <Image Grid.Row="3" Grid.Column="0" HorizontalOptions="End" Source="LogoYape" TranslationY="3"/>
+                        <!--<Label Grid.Row="3" Grid.Column="1" Padding="0,5,0,0" HorizontalOptions="Start" Text="lyh4852@icloud.com" HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold"/>-->
+                    </Grid>
+                </Frame>
+
+                <Grid Grid.Row="4" ColumnDefinitions="*,*" Padding="15">
+                    <Button Grid.Column="0"  ImageSource="Arrow" Text="Seguir comprando" TextColor="Black" FontAttributes="Bold" BackgroundColor="#e4e4e4" CornerRadius="10" HeightRequest="50" Margin="10,5,10,20" Clicked="Button_Clicked_1"/>
+                    <Button Grid.Column="1" Text="Pagar ahora" TextColor="White" FontAttributes="Bold" BackgroundColor="Black" CornerRadius="10" Margin="5,5,10,20" HeightRequest="50" Clicked="Button_Clicked"/>
+                </Grid>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

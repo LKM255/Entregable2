@@ -1,5 +1,4 @@
 ﻿using AplicativoMovil.Models;
-using AplicativoMovil.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,16 +12,16 @@ using Xamarin.Forms.Xaml;
 namespace AplicativoMovil.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Pedido : ContentPage
+    public partial class Carrito : ContentPage
     {
         public ObservableCollection<DetallePedido> det { get; set; }
         ObservableCollection<DetallePedido> lista = new ObservableCollection<DetallePedido>();
         public ObservableCollection<DetallePedido> detpedido { get { return lista; } }
-        public Pedido(int id,string nombre,string imagen, double precio, int cantidad, double total)
-        //public Pedido()
+        List<DetallePedido> listde;
+        DetallePedido detalle;
+        public Carrito(int id, string nombre, string imagen, double precio, int cantidad, double total)
         {
             InitializeComponent();
-            
             det = new ObservableCollection<DetallePedido>
             {
                 new DetallePedido
@@ -33,9 +32,9 @@ namespace AplicativoMovil.Views
             double tot = 0;
             foreach (var deta in det)
             {
-                DetallePedido detalle = new DetallePedido
+                detalle = new DetallePedido
                 {
-                    idp =deta.idp,
+                    idp = deta.idp,
                     descripcion = deta.descripcion,
                     precio = deta.precio,
                     cantidad = deta.cantidad,
@@ -46,15 +45,23 @@ namespace AplicativoMovil.Views
                 detpedido.Add(detalle);
             }
             cldetalle.ItemsSource = detpedido;
-            Totallbl.Text = tot.ToString();
-            double totaldet = double.Parse(Totallbl.Text);
-            Totallbl.Text = Convert.ToString(totaldet + tot);
-
+            double totaldet = double.Parse(lblsubtotal.Text.ToString());
+            lblsubtotal.Text = Convert.ToString(totaldet + tot);
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new ChekOut());
+            Data.DataLogic dt = new Data.DataLogic();
+            double total = double.Parse(lblsubtotal.Text);
+            dt.RegisterPedido(detalle,total);
+            new NavigationPage(new ChekOut());
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new AppShell();
+            //new NavigationPage(new AppShell());
+            //await Navigation.PushModalAsync(new AppShell());
         }
     }
 }

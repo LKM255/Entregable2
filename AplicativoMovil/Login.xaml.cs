@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AplicativoMovil.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,20 +16,7 @@ namespace AplicativoMovil
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            BindingContext = new ViewModels.UsuarioVm();
-            
-            if(user.Text == "jean" && Pass.Text == "12345")
-            {
-                Navigation.PushModalAsync(new Inicio());
-            }
-            else
-            {
-                DisplayAlert("Error", "Contraseña o usuario incorecto", "OK");
-            }
+            BindingContext = new LoginVM();
         }
     }
 }

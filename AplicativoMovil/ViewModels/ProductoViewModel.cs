@@ -1,35 +1,41 @@
-﻿using AplicativoMovil.Models;
+﻿using AplicativoMovil.Data;
+using AplicativoMovil.Models;
+using AplicativoMovil.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace AplicativoMovil.ViewModels
 {
-    public class ProductoViewModel
+    public class ProductoViewModel : BaseVM
     {
-        public ObservableCollection<Producto> producto { get; set; }
+         
+        ObservableCollection<Producto> Productolista = new ObservableCollection<Producto>();
+        public int id;
+        public ObservableCollection<Producto> producto { get { return Productolista; } }
         public ProductoViewModel()
         {
-            producto = new ObservableCollection<Producto>
+            Listar();
+        }
+        private void Listar()
+        {
+            DataLogic dl = new DataLogic();
+            var lspro = dl.ListaProducto();
+            foreach (var prodetails in lspro)
             {
-                new Producto
+                Producto students = new Producto
                 {
-                    ID ='1', nombre="Juego de comedor de madera", Precio="S/ 250", imagen="mesa1.png"
-                },
-                new Producto
-                {
-                    ID ='2', nombre="Repostero para cocina", Precio="S/ 1000", imagen="cocina1.webp"
-                },
-                new Producto
-                {
-                    ID ='3', nombre="Sofa de espuma", Precio="S/ 1500", imagen="sofa1.png"
-                },
-                new Producto
-                {
-                    ID ='3', nombre="Cama pastel", Precio="S/ 900", imagen="cama1.png"
-                }
-            };
+                    ID = prodetails.ID,
+                    nombre = prodetails.nombre,
+                    precio = prodetails.precio,
+                    imagen = prodetails.imagen,
+                    descripcion = prodetails.descripcion
+                };
+                producto.Add(students);
+            }
         }
     }
 }

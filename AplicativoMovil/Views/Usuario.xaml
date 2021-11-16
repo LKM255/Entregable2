@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoMovil.Views.Usuario">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <Grid RowDefinitions="Auto,*,80,80,80">
+                    <Frame Grid.Row="1"
+                       HeightRequest="170"
+                       WidthRequest="270"
+                       CornerRadius="20"
+                       IsClippedToBounds="True"
+                       Margin="0,0,0,15">
+                        <Grid RowDefinitions="Auto,Auto,Auto">
+                            <!--Imagen usuario-->
+                            <Frame Grid.Row="0"
+                               HeightRequest="100"
+                               WidthRequest="100"
+                               HasShadow="False"
+                               CornerRadius="50"
+                               Padding="0"
+                               IsClippedToBounds="True"
+                               HorizontalOptions="Center">
+                                <Image Source="profileuser.png"
+                                   Aspect="AspectFill"/>
+                            </Frame>
+                            <!--Nombre-->
+                            <Label Grid.Row="1"
+                               Text="Jean Pierre Esteban Valderrama"
+                               HorizontalTextAlignment="Center"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                                Margin="0,10,0,0"
+                               FontSize="18"/>
+                            <!--Correo-->
+                            <Label Grid.Row="2"
+                               Text="jean@hotmail.com"
+                               HorizontalTextAlignment="Center"
+                               FontSize="16"
+                               Margin="0,-5,0,0"/>
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="2"
+                       HeightRequest="100"
+                       WidthRequest="100"
+                       CornerRadius="20"
+                       IsClippedToBounds="True"
+                       Margin="0,0,0,1">
+                        <Grid RowDefinitions="*">
+                            <!--Imagen usuario-->
+                            <Frame Grid.Row="0"
+                               HeightRequest="50"
+                               WidthRequest="50"
+                               HasShadow="False"
+                               CornerRadius="50"
+                               Padding="0"
+                               IsClippedToBounds="True"
+                               HorizontalOptions="Center">
+                                <Image Source="setting.png"
+                                   Aspect="AspectFit"/>
+                            </Frame>
+                            <!--Nombre-->
+                            <Label Grid.Row="0" Grid.Column="1"
+                               Text="Configuracion"
+                               HorizontalTextAlignment="Start"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                                Margin="0,0,0,0"
+                               FontSize="28"/>
+                            <!--Correo-->
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="3"
+                       HeightRequest="100"
+                       WidthRequest="100"
+                       CornerRadius="20"
+                       IsClippedToBounds="True"
+                       Margin="0,0,0,1">
+                        <Grid RowDefinitions="*">
+                            <!--Imagen usuario-->
+                            <Frame Grid.Row="0"
+                               HeightRequest="50"
+                               WidthRequest="50"
+                               HasShadow="False"
+                               CornerRadius="50"
+                               Padding="0"
+                               IsClippedToBounds="True"
+                               HorizontalOptions="Center">
+                                <Image Source="carrito.jpg"
+                                   Aspect="AspectFit"/>
+                            </Frame>
+                            <!--Nombre-->
+                            <Label Grid.Row="0" Grid.Column="1"
+                               Text="Compras"
+                               HorizontalTextAlignment="Start"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                                Margin="0,0,0,0"
+                               FontSize="28"/>
+                            <!--Correo-->
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="4"
+                       HeightRequest="100"
+                       WidthRequest="100"
+                       CornerRadius="20"
+                       IsClippedToBounds="True"
+                       Margin="0,0,0,1">
+                        <Grid RowDefinitions="*">
+                            <!--Imagen usuario-->
+                            <Frame Grid.Row="0"
+                               HeightRequest="50"
+                               WidthRequest="50"
+                               HasShadow="False"
+                               CornerRadius="50"
+                               Padding="0"
+                               IsClippedToBounds="True"
+                               HorizontalOptions="Center">
+                                <Image Source="logout.png"
+                                   Aspect="AspectFit"/>
+                            </Frame>
+                            <!--Nombre-->
+                            <Label Grid.Row="0" Grid.Column="1"
+                               Text="Cerrar Sesion"
+                               HorizontalTextAlignment="Start"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                                Margin="0,0,0,0"
+                               FontSize="28"/>
+                            <!--Correo-->
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

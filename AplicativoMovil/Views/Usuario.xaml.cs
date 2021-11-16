@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace AplicativoMovil.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Cocina : ContentPage
+    public partial class Usuario : ContentPage
     {
-        public Cocina()
+        public Usuario()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            //Navigation.PushModalAsync(new Pedido());
         }
     }
 }

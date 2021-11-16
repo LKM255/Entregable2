@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AplicativoMovil.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,19 +8,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AplicativoMovil.Views
+namespace AplicativoMovil
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Cocina : ContentPage
+    public partial class Register : ContentPage
     {
-        public Cocina()
+        public Register()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            //Navigation.PushModalAsync(new Pedido());
+            BindingContext = new RegisterVM();
         }
     }
 }
