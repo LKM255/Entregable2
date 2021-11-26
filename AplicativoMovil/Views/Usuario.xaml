@@ -27,6 +27,7 @@
                             </Frame>
                             <!--Nombre-->
                             <Label Grid.Row="1"
+                                   x:Name="Nombre"
                                Text="Jean Pierre Esteban Valderrama"
                                HorizontalTextAlignment="Center"
                                TextColor="Black"
@@ -35,6 +36,7 @@
                                FontSize="18"/>
                             <!--Correo-->
                             <Label Grid.Row="2"
+                                   x:Name="correo"
                                Text="jean@hotmail.com"
                                HorizontalTextAlignment="Center"
                                FontSize="16"
@@ -121,13 +123,19 @@
                                    Aspect="AspectFit"/>
                             </Frame>
                             <!--Nombre-->
-                            <Label Grid.Row="0" Grid.Column="1"
+                            <Button Grid.Row="0" Grid.Column="1" Text="Cerrar Sesion"
+                                    HorizontalOptions="Start"
+                                    TextColor="Black"
+                                    FontAttributes="Bold"
+                                    Margin="0,0,0,0"
+                                    FontSize="28" Clicked="Button_Clicked"/>
+                            <!--<Label Grid.Row="0" Grid.Column="1"
                                Text="Cerrar Sesion"
                                HorizontalTextAlignment="Start"
                                TextColor="Black"
                                FontAttributes="Bold"
                                 Margin="0,0,0,0"
-                               FontSize="28"/>
+                               FontSize="28"/>-->
                             <!--Correo-->
                         </Grid>
                     </Frame>

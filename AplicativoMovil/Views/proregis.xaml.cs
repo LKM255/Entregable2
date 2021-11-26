@@ -16,12 +16,20 @@ namespace AplicativoMovil.Views
     public partial class proregis : ContentPage
     {
         Producto p;
+        Categoria c;
         private SQLiteConnection con;
         public proregis()
         {
             InitializeComponent();
             con = DependencyService.Get<ISQLite>().GetConnection();
             con.CreateTable<Producto>();
+            con.CreateTable<Categoria>();
+            con.CreateTable<TablaTemporal>();
+            Eliminar();
+        }
+        public void Eliminar()
+        {
+            con.DeleteAll<TablaTemporal>();
         }
         private void Button_Clicked(object sender, EventArgs e)
         {
@@ -30,6 +38,7 @@ namespace AplicativoMovil.Views
             p.precio = double.Parse(precio.Text);
             p.imagen = imagen.Text;
             p.descripcion = descrip.Text;
+            p.CategoriaId = Convert.ToInt32(categoid.Text);
             bool si = registrar(p);
             if(si)
             {
@@ -43,12 +52,40 @@ namespace AplicativoMovil.Views
                 nombre = p.nombre,
                 precio = p.precio,
                 imagen = p.imagen,
-                descripcion = p.descripcion
+                descripcion = p.descripcion,
+                CategoriaId = p.CategoriaId
             };
             try
             {
                 con.Insert(p);
-                con.Close();
+                return true;
+            }
+            catch (SQLiteException) { }
+            catch (Exception ex) { throw ex; }
+            return false;
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            c = new Categoria();
+            c.imagen = imagencat.Text;
+            c.Descripcion = descripcat.Text;
+            bool si = registrarcat(c);
+            if (si)
+            {
+                DisplayAlert("A", "Exito", "OK");
+            }
+        }
+        public bool registrarcat(Categoria c)
+        {
+            c = new Categoria()
+            {
+                Descripcion = c.Descripcion,
+                imagen = c.imagen,
+            };
+            try
+            {
+                con.Insert(c);
                 return true;
             }
             catch (SQLiteException) { }

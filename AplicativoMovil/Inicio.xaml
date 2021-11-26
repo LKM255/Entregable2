@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:AplicativoMovil.ViewModels"
              x:Class="AplicativoMovil.Inicio">
     <ContentPage.Content>
         <Grid>
@@ -13,8 +12,9 @@
             
             <!--<BoxView Color="Chocolate" Grid.Row="0" HeightRequest="40"></BoxView>-->
             <!--<Image Source="Menu.png" Grid.Row="0" HorizontalOptions="Start" Margin="15"></Image>-->
-            <ImageButton Source="profileuser.png" Grid.Row="0" HorizontalOptions="End" HeightRequest="40"></ImageButton>
-            <Grid Grid.Row="1" >
+            <ImageButton Source="shop.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" HeightRequest="40" Clicked="ImageButton_Clicked"></ImageButton>
+            <!--<ImageButton Source="profileuser.png" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" HeightRequest="40"></ImageButton>-->
+            <!--<Grid Grid.Row="1" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -31,8 +31,36 @@
                 <Label Text="Cocina" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" Margin="0,-50" FontSize="20" FontAttributes="Bold"></Label>
                 <Label Text="Comedor" Grid.Row="1" Grid.Column="3" HorizontalOptions="Center" Margin="0,-50" FontSize="20" FontAttributes="Bold"></Label>
                 <Label Text="Sala" Grid.Row="1" Grid.Column="4" HorizontalOptions="Center" Margin="0,-50" FontSize="20" FontAttributes="Bold"></Label>
-            </Grid>
-            <CollectionView x:Name="select" ItemsSource="{Binding producto}" VerticalOptions="StartAndExpand" Grid.Row="2" Margin="0,-210,0,0" SelectionMode="Single" 
+            </Grid>-->
+            <CollectionView Grid.Row="1" ItemsSource="{Binding categoria}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged_1">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Frame CornerRadius="20" HasShadow="False" WidthRequest="100" HeightRequest="180" Padding="4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*,Auto" Padding="2">
+                                    <Label Text="{Binding ID}" IsVisible="false" IsEnabled="False"></Label>
+                                    <Image Source="{Binding imagen}" Grid.Row="0" WidthRequest="100" HeightRequest="100"></Image>
+                                    <Label Text="{Binding Descripcion}" Grid.Row="1" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" TextColor="Black"></Label>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <CollectionView x:Name="select" ItemsSource="{Binding producto}" VerticalOptions="StartAndExpand" Grid.Row="2" Margin="0,-450,0,0" SelectionMode="Single" 
                             SelectionChanged="CollectionView_SelectionChanged">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2"></GridItemsLayout>
@@ -45,12 +73,12 @@
                                     <VisualState Name="Normal" />
                                     <VisualState Name="Selected">
                                         <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="#F5F5F8" />
+                                            <Setter Property="BackgroundColor" Value="white" />
                                         </VisualState.Setters>
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                            <Frame WidthRequest="200" HeightRequest="250" CornerRadius="20" HasShadow="False" Padding="4" BackgroundColor="LightGray">
+                            <Frame WidthRequest="200" HeightRequest="250" CornerRadius="20" HasShadow="False" Padding="4">
                                 <Grid ColumnDefinitions="*" RowDefinitions="200,Auto" Padding="2">
                                     <Label Text="{Binding ID}" IsVisible="false" IsEnabled="False"></Label>
                                     <Label Text="{Binding descripcion}" IsVisible="false" IsEnabled="False"></Label>
@@ -78,6 +106,5 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
         </Grid>
-        
     </ContentPage.Content>
 </ContentPage>

@@ -16,7 +16,6 @@ namespace AplicativoMovil.Views
         public PageDetail(string id, string nombre,string imagen, string descrip, string precio)
         {
             InitializeComponent();
-            //BindingContext = new PedidoViewModel();
             idp.Text = id;
             nombrep.Text = nombre;
             imagenp.Source = imagen;
@@ -24,7 +23,7 @@ namespace AplicativoMovil.Views
             descripp.Text = descrip;
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(idp.Text);
             string nombre = nombrep.Text;
@@ -33,8 +32,22 @@ namespace AplicativoMovil.Views
             string descrip = descripp.Text;
             int cantidad = int.Parse(cantidadp.Text);
             double total  =cantidad * precio;
+            PedidoViewModel pedido = new PedidoViewModel();
+            bool exito = pedido.AgregarCarito(id, nombre, precio, total, cantidad);
+            if(exito)
+            {
+                DisplayAlert("Exito", "Sea agrego al carrito", "OK");
+            }
+            else
+            {
+                DisplayAlert("Error", "No sea agrego al carrito", "OK");
+            }
             
-            await Navigation.PushModalAsync(new Carrito( id,  nombre,  imagen,  precio,cantidad,total));
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Carrito());
         }
     }
 }

@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AplicativoMovil.ViewModels"
              x:Class="AplicativoMovil.Views.Carrito">
+    <ContentPage.BindingContext>
+        <vm:PedidoViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView>
             <!-- Main Structure-->
@@ -27,15 +30,15 @@
                 <Frame Grid.Row="1" Margin="30,-15,30,0" HeightRequest="292">
                     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
                         <!-- Product list-->
-                        <CollectionView x:Name="cldetalle" Grid.Row="1" Grid.Column="0" Margin="0,-15,0,12" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand"
+                        <CollectionView x:Name="cldetalle" ItemsSource="{Binding carrito}" Grid.Row="1" Grid.Column="0" Margin="0,-15,0,12" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand"
                                      VerticalScrollBarVisibility="Never"
                                      HeightRequest="145">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
                                         <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HeightRequest="60" WidthRequest="60" Source="{Binding Picture}" Margin="0,5,0,0"/>
-                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding descripcion}" Margin="0,5,0,0" FontAttributes="Bold" FontSize="16" TextColor="Silver"/>
-                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding descripcion}" FontAttributes="Bold" FontSize="16" VerticalOptions="End" Margin="0,0,0,5"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding nombre}" Margin="0,5,0,0" FontAttributes="Bold" FontSize="16" TextColor="Silver"/>
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding cantidad}" FontAttributes="Bold" FontSize="16" VerticalOptions="End" Margin="0,0,0,5"/>
                                         <Label Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"  VerticalOptions="Center" FontSize="18" FontAttributes="Bold">
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -48,6 +51,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
+                                        <Label Grid.Row="1" Grid.Column="3" Text="{Binding total}" FontAttributes="Bold" FontSize="16" VerticalOptions="End" Margin="0,0,0,5"/>
                                         <Line  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" X1="260" StrokeThickness="0.5" Stroke="Silver"/>
                                     </Grid>
                                 </DataTemplate>
@@ -55,8 +59,8 @@
                         </CollectionView>
                         <!-- Amount of products -->
                         <Label Grid.Row="2" Grid.Column="0" Text="Total" FontSize="16" TextColor="#4f4f4f" FontAttributes="Bold" Margin="0,0,0,10"/>
-                        
-                        <Label Grid.Row="2" Grid.Column="1" x:Name="lblsubtotal" Text="0"  FontSize="18" FontAttributes="Bold" Margin="0,0,0,10" HorizontalOptions="End"/>
+
+                        <Label Grid.Row="2" Grid.Column="1" x:Name="lblsubtotal"  Text="{Binding totalcosto}"  FontSize="18" FontAttributes="Bold" Margin="0,0,0,10" HorizontalOptions="Center" TextColor="#4f4f4f"/>
                         
 
                         <Line  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,15"

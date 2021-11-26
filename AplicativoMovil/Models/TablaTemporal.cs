@@ -1,12 +1,11 @@
 ﻿using SQLite;
-using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AplicativoMovil.Models
 {
-    public class Producto
+    public class TablaTemporal
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
@@ -15,11 +14,10 @@ namespace AplicativoMovil.Models
         [MaxLength(50)]
         public double precio { get; set; }
         [MaxLength(100)]
-        public string imagen { get; set; }
+        public int idproducto { get; set; }
         [MaxLength(400)]
-        public string descripcion { get; set; }
-
-        [ForeignKey(typeof(Categoria))]
-        public int CategoriaId { get; set; }
+        public double total { get; set; }
+        [MaxLength(400)]
+        public int cantidad { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AplicativoMovil.Models;
+﻿using AplicativoMovil.Data;
+using AplicativoMovil.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,47 +9,82 @@ using Xamarin.Forms;
 
 namespace AplicativoMovil.ViewModels
 {
-    public class PedidoViewModel
+    public class PedidoViewModel:BaseVM
     {
-        public ObservableCollection<Pedido> pedidos { get; set; }
-
-        public Command Carrito { get; set; }
-        public ObservableCollection<DetallePedido> detallepedido { get; set; }
-        public string NombreProducto { get; set; }
-        public string CantidadProducto { get; set; }
-        public PedidoViewModel()
+        ObservableCollection<TablaTemporal> listacarrito = new ObservableCollection<TablaTemporal>();
+        public ObservableCollection<TablaTemporal> carrito { get; set; }
+        public double _totalcosto;
+        public double totalcosto
         {
-            pedidos = new ObservableCollection<Pedido>
+            set
             {
-                new Pedido
-                {
-                    ID ='1', nombre="Jean", correo="jean123_255@hotmail.com"
-                }
-            };
-            detallepedido = new ObservableCollection<DetallePedido>
-            {
-                new DetallePedido
-                {
-                    descripcion = NombreProducto
-                }
-            };
-        }
-        public ICommand Comprar
-        {
+                _totalcosto = value;
+                OnPropertyChanged();
+            }
             get
             {
-                if (Carrito == null)
+                return _totalcosto;
+            }
+        }
+        public PedidoViewModel()
+        {
+            //pedidos = new ObservableCollection<Pedido>
+            //{
+            //    new Pedido
+            //    {
+            //        ID ='1', nombre="Jean", correo="jean123_255@hotmail.com"
+            //    }
+            //};
+            //detallepedido = new ObservableCollection<DetallePedido>
+            //{
+            //    new DetallePedido
+            //    {
+            //        descripcion = NombreProducto
+            //    }
+            //};
+            carrito = new ObservableCollection<TablaTemporal>();
+            BuscarCarrito();
+
+        }
+        
+        public void BuscarCarrito()
+        {
+            DataLogic dl = new DataLogic();
+            var lspro = dl.BuscaraCarrito();
+            foreach (var prodetails in lspro)
+            {
+                carrito.Add(new TablaTemporal()
                 {
-                    Carrito = new Command(comprar);
-                }
-                return Carrito;
+                    nombre = prodetails.nombre,
+                    precio = prodetails.precio,
+                    total = prodetails.total,
+                    cantidad = prodetails.cantidad,
+                    idproducto = prodetails.idproducto
+                });
+                //TablaTemporal cat = new TablaTemporal
+                //{
+                //    nombre = prodetails.nombre,
+                //    precio = prodetails.precio,
+                //    total = prodetails.total,
+                //    cantidad =prodetails.cantidad,
+                //    idproducto=prodetails.idproducto
+                //};
+                //carrito.Add(cat);
+                totalcosto += prodetails.total;
             }
         }
 
-        private void comprar()
+        public bool AgregarCarito(int id, string nombre, double precio, double total,int cantidad)
         {
-            string nombre = NombreProducto;
-            string ca = CantidadProducto;
+            TablaTemporal tabla = new TablaTemporal();
+            tabla.idproducto = id;
+            tabla.nombre = nombre;
+            tabla.precio = precio;
+            tabla.total = total;
+            tabla.cantidad = cantidad;
+            DataLogic dl = new DataLogic();
+            bool exite= dl.AgregarCarrito(tabla);
+            return exite;
         }
     }
 }

@@ -25,7 +25,7 @@
         </Tab>
         <!--<Tab Title="Carrito" Icon="carrito.jpg">
             <ShellContent >
-                <local1:Pedido></local1:Pedido>
+                <local1:Carrito/>
             </ShellContent>
         </Tab>-->
     </TabBar>

@@ -3,12 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AplicativoMovil.Views.proregis">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <Entry Placeholder="nombre" PlaceholderColor="Black" x:Name="nombre"/>
             <Entry Placeholder="precio" PlaceholderColor="Black" x:Name="precio"/>
             <Entry Placeholder="imagen" PlaceholderColor="Black" x:Name="imagen"/>
             <Entry Placeholder="descripcion" PlaceholderColor="Black" x:Name="descrip"/>
-            <Button Text="Iniciar Sesion" BackgroundColor="Black" TextColor="White" CornerRadius="20" Clicked="Button_Clicked"></Button>
+            <Entry Placeholder="codigo categoria" PlaceholderColor="Black" x:Name="categoid"/>
+            <Button Text="Producto" BackgroundColor="Black" TextColor="White" CornerRadius="20" Clicked="Button_Clicked"></Button>
+            <Label Text="Categorias" FontSize="30"></Label>
+            <Entry x:Name="descripcat" Placeholder="Descripcion"></Entry>
+            <Entry x:Name="imagencat" Placeholder="Imagen"></Entry>
+            <Button Text="Categoria" BackgroundColor="Black" TextColor="White" CornerRadius="20" Clicked="Button_Clicked_1"></Button>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

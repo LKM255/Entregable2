@@ -13,7 +13,8 @@
                     </Grid.RowDefinitions>
                     <BoxView Color="Chocolate" Grid.Row="0" HeightRequest="40"></BoxView>
                     <!--<Image Source="Menu.png" Grid.Row="0" HorizontalOptions="Start" Margin="15"></Image>-->
-                    <Image Source="profileuser.png" Grid.Row="0" HorizontalOptions="End" HeightRequest="40"></Image>
+                    <ImageButton Source="shop.png" Grid.Row="0"  HorizontalOptions="End" HeightRequest="40" Clicked="ImageButton_Clicked"></ImageButton>
+                    <!--<Image Source="profileuser.png" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" HeightRequest="40"></Image>-->
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>

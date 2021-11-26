@@ -1,4 +1,5 @@
 ﻿using AplicativoMovil.Models;
+using AplicativoMovil.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,42 +20,56 @@ namespace AplicativoMovil.Views
         public ObservableCollection<DetallePedido> detpedido { get { return lista; } }
         List<DetallePedido> listde;
         DetallePedido detalle;
-        public Carrito(int id, string nombre, string imagen, double precio, int cantidad, double total)
+        public Carrito()
         {
             InitializeComponent();
-            det = new ObservableCollection<DetallePedido>
-            {
-                new DetallePedido
-                {
-                    idp=id, descripcion=nombre,cantidad=cantidad,precio=precio,total=total,PedidoId=1
-                }
-            };
-            double tot = 0;
-            foreach (var deta in det)
-            {
-                detalle = new DetallePedido
-                {
-                    idp = deta.idp,
-                    descripcion = deta.descripcion,
-                    precio = deta.precio,
-                    cantidad = deta.cantidad,
-                    total = deta.total,
-                    PedidoId = deta.PedidoId
-                };
-                tot = deta.total;
-                detpedido.Add(detalle);
-            }
-            cldetalle.ItemsSource = detpedido;
-            double totaldet = double.Parse(lblsubtotal.Text.ToString());
-            lblsubtotal.Text = Convert.ToString(totaldet + tot);
+            //det = new ObservableCollection<DetallePedido>
+            //{
+            //    new DetallePedido
+            //    {
+            //        idp=id, descripcion=nombre,cantidad=cantidad,precio=precio,total=total,PedidoId=1
+            //    }
+            //};
+            //double tot = 0;
+            //foreach (var deta in det)
+            //{
+            //    detalle = new DetallePedido
+            //    {
+            //        idp = deta.idp,
+            //        descripcion = deta.descripcion,
+            //        precio = deta.precio,
+            //        cantidad = deta.cantidad,
+            //        total = deta.total,
+            //        PedidoId = deta.PedidoId
+            //    };
+            //    tot = deta.total;
+            //    detpedido.Add(detalle);
+            //}
+            //BindingContext = new PedidoViewModel();
+            //cldetalle.ItemsSource = detpedido;
+            //double totaldet = double.Parse(lblsubtotal.Text.ToString());
+            //lblsubtotal.Text = Convert.ToString(totaldet + tot);
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
             Data.DataLogic dt = new Data.DataLogic();
+            var ls = dt.BuscaraCarrito();
+            foreach (var prodetails in ls)
+            {
+                detalle = new DetallePedido
+                {
+                    descripcion = prodetails.nombre,
+                    precio = prodetails.precio,
+                    total = prodetails.total,
+                    cantidad = prodetails.cantidad,
+                    idp = prodetails.idproducto
+                };
+            }
             double total = double.Parse(lblsubtotal.Text);
             dt.RegisterPedido(detalle,total);
-            new NavigationPage(new ChekOut());
+            dt.EliminarCarrito();
+            Navigation.PushModalAsync(new ChekOut());
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)

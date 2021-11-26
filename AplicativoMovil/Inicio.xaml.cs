@@ -18,12 +18,10 @@ namespace AplicativoMovil
         {
             InitializeComponent();
             BindingContext = new ProductoViewModel();
-            
         }
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
-            var c = e.CurrentSelection.First();
             Models.Producto model = e.CurrentSelection.FirstOrDefault() as Models.Producto;
             string id = model.ID.ToString();
             string nombre = model.nombre;
@@ -33,5 +31,16 @@ namespace AplicativoMovil
             Navigation.PushModalAsync(new PageDetail(id, nombre, imagen, descrip,  precio));
         }
 
+        private void CollectionView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            Models.Categoria model = e.CurrentSelection.FirstOrDefault() as Models.Categoria;
+            int id = model.ID;
+            Navigation.PushModalAsync(new ListProduct(id));
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new Carrito());
+        }
     }
 }

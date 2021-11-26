@@ -1,8 +1,10 @@
 ﻿using AplicativoMovil.Data;
+using AplicativoMovil.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AplicativoMovil.ViewModels
@@ -65,11 +67,14 @@ namespace AplicativoMovil.ViewModels
         {
             var email = EmailTxt;
             var pass = PasswordTxt;
-
             DataLogic dl = new DataLogic();
-            bool succes = dl.LoginUser(email, pass);
-            if(succes)
+            Usuario usu = dl.LoginUser(email, pass);
+            if(usu.ID != 0)
             {
+                Preferences.Set("IDUSU", usu.ID);
+                Preferences.Set("Usuario", usu.User);
+                Preferences.Set("Nombre", usu.Nombres);
+                var value = Preferences.Get("IDUSU",0);
                 App.Current.MainPage = new AppShell();
             }
             else
