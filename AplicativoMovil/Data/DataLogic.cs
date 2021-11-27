@@ -118,7 +118,7 @@ namespace AplicativoMovil.Data
             {
                 int id;
                 con.Insert(ped);
-                var variable = con.Query<Pedido>("SELECT MAX(ID) FROM Pedido");
+                var variable = con.Query<Pedido>("SELECT MAX(ID) FROM Pedido").ToList();
                 foreach( var s in variable)
                 {
                    id = s.ID;
@@ -128,7 +128,7 @@ namespace AplicativoMovil.Data
             catch (Exception ex) { throw ex; }
             det = new DetallePedido
             {
-                PedidoId = id,
+                PedidoId = 1,
                 idp = dp.idp,
                 descripcion = dp.descripcion,
                 cantidad = dp.cantidad,
