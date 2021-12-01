@@ -74,7 +74,7 @@ namespace AplicativoMovil.ViewModels
                 Preferences.Set("IDUSU", usu.ID);
                 Preferences.Set("Usuario", usu.User);
                 Preferences.Set("Nombre", usu.Nombres);
-                var value = Preferences.Get("IDUSU",0);
+
                 App.Current.MainPage = new AppShell();
             }
             else

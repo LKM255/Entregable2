@@ -1,8 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
              x:Class="AplicativoMovil.App">
     <Application.Resources>
+        <Color x:Key="primary">#9C27B0</Color>
+        <Color x:Key="primary_dark">#7B1FA2</Color>
+        <Color x:Key="primary_light">#B2DFDB</Color>
+        <Color x:Key="accent">black</Color>
+        <Color x:Key="primary_text">#212121</Color>
+        <Color x:Key="secondary_text">#757575</Color>
+        <Color x:Key="icons">#FFFFFF</Color>
+        <Color x:Key="divider">#BDBDBD</Color>
+        <Color x:Key="background_page">#ecf0f1</Color>
+        <Color x:Key="placeholder_value">#ecf0f1</Color>
 
+        <OnPlatform x:Key="FontAwesomeSolid" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="Font Awesome 5 Free" />
+            <On Platform="Android" Value="fa-solid-900.ttf#Font Awesome 5 Free" />
+        </OnPlatform>
+
+        <OnPlatform x:Key="FontAwesomeBrand" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="Font Awesome 5 Brands" />
+            <On Platform="Android" Value="fa-brands-400.ttf#Font Awesome 5 Brands" />
+        </OnPlatform>
     </Application.Resources>
 </Application>

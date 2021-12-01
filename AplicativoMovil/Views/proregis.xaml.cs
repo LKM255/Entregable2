@@ -30,6 +30,8 @@ namespace AplicativoMovil.Views
         public void Eliminar()
         {
             con.DeleteAll<TablaTemporal>();
+            con.DeleteAll<Pedido>();
+            con.DeleteAll<DetallePedido>();
         }
         private void Button_Clicked(object sender, EventArgs e)
         {

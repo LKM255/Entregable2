@@ -28,5 +28,15 @@
                 <local1:Carrito/>
             </ShellContent>
         </Tab>-->
+        <Tab Title="Buscar" Icon="loupe.png">
+            <ShellContent>
+                <local1:SearchPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Buscar" Icon="lista.png">
+            <ShellContent>
+                <local1:ListPedido/>
+            </ShellContent>
+        </Tab>
     </TabBar>
 </Shell>

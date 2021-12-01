@@ -12,7 +12,10 @@ namespace AplicativoMovil.ViewModels
 {
     public class ProductoViewModel : BaseVM
     {
-         
+        
+
+        
+
         ObservableCollection<Producto> Productolista = new ObservableCollection<Producto>();
         public ObservableCollection<Producto> producto { get { return Productolista; } }
 
@@ -76,5 +79,23 @@ namespace AplicativoMovil.ViewModels
                 productoxcategoria.Add(cat);
             }
         }
+        //private void SerchProduct()
+        //{
+        //    producto.Clear();
+        //    DataLogic dl = new DataLogic();
+        //    var lst = dl.ShowDataProductFilter(Filter);
+        //    foreach(var prodetails in lst)
+        //    {
+        //        Producto pr = new Producto
+        //        {
+        //            ID = prodetails.ID,
+        //            nombre = prodetails.nombre,
+        //            imagen = prodetails.imagen,
+        //            descripcion = prodetails.descripcion,
+        //            precio = prodetails.precio
+        //        };
+        //        producto.Add(pr);
+        //    }
+        //}
     }
 }

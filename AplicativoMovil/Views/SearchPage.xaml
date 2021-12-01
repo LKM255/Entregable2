@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AplicativoMovil.Views.SearchPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0"
+                   Grid.Column="0"
+                   Padding="0"
+                   HeightRequest="55"
+                   WidthRequest="330"
+                   CornerRadius="30"
+                   BackgroundColor="White"
+                   HorizontalOptions="Start">
+                <SearchBar
+                    Placeholder="Buscar"
+                    SearchCommand="{Binding SearchCommand}"
+                    Text="{Binding Filter}"
+                    BackgroundColor="Transparent">
+                </SearchBar>
+            </Frame>
+            <CollectionView x:Name="select" ItemsSource="{Binding producto}" VerticalOptions="StartAndExpand" Grid.Row="1" SelectionMode="Single" 
+                            SelectionChanged="CollectionView_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="white" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Frame WidthRequest="200" HeightRequest="250" CornerRadius="20" HasShadow="False" Padding="4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="200,Auto" Padding="2">
+                                    <Label Text="{Binding ID}" IsVisible="false" IsEnabled="False"></Label>
+                                    <Label Text="{Binding descripcion}" IsVisible="false" IsEnabled="False"></Label>
+                                    <Image Source="{Binding imagen}" Grid.Row="0" HorizontalOptions="Center" WidthRequest="300" HeightRequest="250" Aspect="AspectFill"></Image>
+                                    <Label HorizontalOptions="Center" Grid.Row="1" VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="S/"
+                                                          FontSize="30"
+                                                          FontAttributes="Bold"
+                                                          TextColor="Black"/>
+                                                <Span Text="{Binding precio}"
+                                                          FontSize="30"
+                                                          FontAttributes="Bold"
+                                                          TextColor="Black"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

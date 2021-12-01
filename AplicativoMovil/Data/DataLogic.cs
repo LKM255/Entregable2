@@ -15,17 +15,18 @@ namespace AplicativoMovil.Data
         private SQLiteConnection con;
         private Producto p;
         private Usuario usu;
-        private DetallePedido det;
+        private DetallePedido detpedido;
         private Pedido ped;
         private int id;
         public DataLogic()
         {
             con = DependencyService.Get<ISQLite>().GetConnection();
-            con.CreateTable<Producto>();
+            
             con.CreateTable<Pedido>();
             con.CreateTable<DetallePedido>();
             con.CreateTable<Usuario>();
             con.CreateTable<TablaTemporal>();
+            con.CreateTable<Producto>();
         }
 
         public bool RegisterUsers(string nombres, string user, string pass)
@@ -105,20 +106,22 @@ namespace AplicativoMovil.Data
             return lstStudent;
         }
 
-        public bool RegisterPedido(DetallePedido dp, double total)
+        public bool RegisterPedido(List<DetallePedido> dpe, double total)
         {
             var ID = Convert.ToInt32(Preferences.Get("IDUSU", 0));
+            var nombre = Preferences.Get("Nombre", "");
+            var usuario = Preferences.Get("Usuario", "");
             ped = new Pedido
             {
-                correo = "jean@hotmail.com",
-                IDU=ID,
-                nombre="Jean Pierre Esteban Valderrama",
+                correo = usuario,
+                IDU = ID,
+                nombre = nombre,
+                Total = total,
             };
             try
             {
-                int id;
                 con.Insert(ped);
-                var variable = con.Query<Pedido>("SELECT MAX(ID) FROM Pedido").ToList();
+                var variable = con.Query<Pedido>("SELECT * FROM Pedido WHERE ID = (SELECT MAX(ID) FROM Pedido)").ToList();
                 foreach( var s in variable)
                 {
                    id = s.ID;
@@ -126,24 +129,42 @@ namespace AplicativoMovil.Data
             }
             catch (SQLiteException ex) { throw ex; }
             catch (Exception ex) { throw ex; }
-            det = new DetallePedido
-            {
-                PedidoId = 1,
-                idp = dp.idp,
-                descripcion = dp.descripcion,
-                cantidad = dp.cantidad,
-                precio = dp.precio,
-                total = total
-            };
             try
             {
-                con.Insert(det);
+                foreach (var dp in dpe)
+                {
+                    detpedido = new DetallePedido
+                    {
+                        PedidoId = id,
+                        idp = dp.idp,
+                        descripcion = dp.descripcion,
+                        cantidad = dp.cantidad,
+                        precio = dp.precio,
+                        total = dp.total,
+                    };
+
+                    con.Insert(detpedido);
+                }
                 return true;
+                
             }
             catch (SQLiteException) { }
             catch (Exception) { }
             return false;
         }
+
+        internal IEnumerable<Pedido> BuscaraPedido()
+        {
+            var lstStudent = from p in con.Table<Pedido>() select p;
+            return lstStudent;
+        }
+
+        public IEnumerable<Producto> ShowDataProductFilter(string Filter)
+        {
+            var lstProducts = from product in con.Table<Producto>().Where(p => p.nombre.ToLower().Contains(Filter.ToLower())) select product;
+            return lstProducts;
+        }
+
 
     }
 }

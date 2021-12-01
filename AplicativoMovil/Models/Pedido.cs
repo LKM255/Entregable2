@@ -17,5 +17,7 @@ namespace AplicativoMovil.Models
         public string nombre { get; set; }
         [MaxLength(50)]
         public string correo { get; set; }
+        [MaxLength(50)]
+        public double Total { get; set; }
     }
 }

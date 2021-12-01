@@ -13,6 +13,8 @@ namespace AplicativoMovil.ViewModels
     {
         ObservableCollection<TablaTemporal> listacarrito = new ObservableCollection<TablaTemporal>();
         public ObservableCollection<TablaTemporal> carrito { get; set; }
+        ObservableCollection<Pedido> listpedido = new ObservableCollection<Pedido>();
+        public ObservableCollection<Pedido> pedido { get { return listpedido; }}
         public double _totalcosto;
         public double totalcosto
         {
@@ -44,7 +46,8 @@ namespace AplicativoMovil.ViewModels
             //};
             carrito = new ObservableCollection<TablaTemporal>();
             BuscarCarrito();
-
+            Buscarpedido();
+            OnPropertyChanged();
         }
         
         public void BuscarCarrito()
@@ -86,5 +89,22 @@ namespace AplicativoMovil.ViewModels
             bool exite= dl.AgregarCarrito(tabla);
             return exite;
         }
+
+        public void Buscarpedido()
+        {
+            DataLogic dl = new DataLogic();
+            var lspro = dl.BuscaraPedido();
+            foreach (var prodetails in lspro)
+            {
+                pedido.Add(new Pedido()
+                {
+                    nombre = prodetails.nombre,
+                    correo = prodetails.correo,
+                    ID = prodetails.ID,
+                    Total = prodetails.Total,
+                });
+            }
+        }
+
     }
 }

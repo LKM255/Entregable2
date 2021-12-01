@@ -18,7 +18,7 @@ namespace AplicativoMovil.Views
         public ObservableCollection<DetallePedido> det { get; set; }
         ObservableCollection<DetallePedido> lista = new ObservableCollection<DetallePedido>();
         public ObservableCollection<DetallePedido> detpedido { get { return lista; } }
-        List<DetallePedido> listde;
+        //List<DetallePedido> listde;
         DetallePedido detalle;
         public Carrito()
         {
@@ -53,6 +53,7 @@ namespace AplicativoMovil.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
+            List<DetallePedido> listdet = new List<DetallePedido>();
             Data.DataLogic dt = new Data.DataLogic();
             var ls = dt.BuscaraCarrito();
             foreach (var prodetails in ls)
@@ -65,9 +66,10 @@ namespace AplicativoMovil.Views
                     cantidad = prodetails.cantidad,
                     idp = prodetails.idproducto
                 };
+                listdet.Add(detalle);
             }
             double total = double.Parse(lblsubtotal.Text);
-            dt.RegisterPedido(detalle,total);
+            dt.RegisterPedido(listdet, total);
             dt.EliminarCarrito();
             Navigation.PushModalAsync(new ChekOut());
         }

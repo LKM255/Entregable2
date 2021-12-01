@@ -13,6 +13,7 @@
             <!--<BoxView Color="Chocolate" Grid.Row="0" HeightRequest="40"></BoxView>-->
             <!--<Image Source="Menu.png" Grid.Row="0" HorizontalOptions="Start" Margin="15"></Image>-->
             <ImageButton Source="shop.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" HeightRequest="40" Clicked="ImageButton_Clicked"></ImageButton>
+            
             <!--<ImageButton Source="profileuser.png" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" HeightRequest="40"></ImageButton>-->
             <!--<Grid Grid.Row="1" >
                 <Grid.ColumnDefinitions>
